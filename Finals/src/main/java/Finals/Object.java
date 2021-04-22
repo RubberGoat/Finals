@@ -10,5 +10,9 @@ package Finals;
  * @author Aldo
  */
 public class Object {
+    //define string
     
+    //create constructor
+    
+    //to string
 }
