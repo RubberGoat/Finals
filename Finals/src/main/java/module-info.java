@@ -7,6 +7,8 @@ module Finals {
     requires javafx.controls;
     requires javafx.graphicsEmpty;
     requires javafx.graphics;
+    
+    requires java.sql;
 
     opens Finals to javafx.fxml;
     exports Finals;
