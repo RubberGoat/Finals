@@ -11,4 +11,17 @@ package Finals;
  */
 public class Database {
     
+        final private String database= "jdbc:sqlite:CBDatabase.db";
+        
+        //setup database
+        
+        //insert data
+        
+        //get database
+        
+        //login boolea
+        
+        //whatever boolean
+
+    
 }
