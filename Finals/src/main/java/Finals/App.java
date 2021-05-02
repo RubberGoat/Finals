@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * JavaFX App
@@ -16,8 +17,10 @@ public class App extends Application {
     private static Scene scene;
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, ClassNotFoundException, SQLException {
         //setup database
+        Database.setupDatabase();
+        Database.printAll();
         
         scene = new Scene(loadFXML("HomePage"), 640, 480);
         stage.setScene(scene);
