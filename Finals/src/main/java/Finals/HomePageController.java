@@ -19,9 +19,14 @@ public class HomePageController {
     }
     
     @FXML
+    private void TextWrapper() throws IOException{
+                App.setRoot("TextWrapper");
+    }
+    
+    @FXML
     private void switchToSecondary() throws IOException,InterruptedException {
         
-//        App.setRoot("secondary");
+
         try{
             threadOne.start();
             threadTwo.start();
