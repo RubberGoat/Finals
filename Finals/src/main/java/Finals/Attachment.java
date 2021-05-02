@@ -22,9 +22,6 @@ public class Attachment {
         this.attachment_data = attachment_data;
     }
 
-
-  
-
     
 
     /**
@@ -69,6 +66,10 @@ public class Attachment {
         this.attachment_id = attachment_id;
     }
 
+    @Override
+     public String toString(){
+        return getAttachment_id() + " " + getAttachment_name();
+    }
   
     
 }
