@@ -5,9 +5,12 @@
  */
 package Finals;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,8 +20,20 @@ import java.sql.Statement;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
+
+import java.awt.image.BufferedImage;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -32,6 +47,13 @@ public class MemeGeneratorController {
     @FXML
     private ImageView Meme;
     
+    @FXML
+    private ProgressBar pb;
+    
+//    private Stage stage; 
+    
+//    private BufferedImage image;
+    
     public void initialize() throws FileNotFoundException, IOException, SQLException{     
       
        try {
@@ -41,7 +63,7 @@ public class MemeGeneratorController {
         Statement st = conn.createStatement();
         
         //get memes from database
-        String query = "SELECT attachment_name, attachment_data FROM Attachment WHERE attachment_name LIKE '%.jpg' ";
+        String query = "SELECT attachment_name, attachment_data FROM Attachment WHERE attachment_name LIKE '%.jpg' OR attachment_name LIKE '%.gif' OR attachment_name LIKE '%.png' ";
         ResultSet rs = st.executeQuery(query);
         
         //show memes into list view
@@ -125,5 +147,109 @@ public class MemeGeneratorController {
     }
     
     //change selection 
+    @FXML
+    public void selectMemes() throws SQLException, FileNotFoundException, IOException{
+        //get name of selected file
+        String selectedFile = String.valueOf(MemeList.getSelectionModel().getSelectedItem());
+        
+        try {
+            
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:FinalsDatabase.db");
+            Statement st = conn.createStatement();
+
+//            show files w the selceted file name from sql
+            String query = "SELECT * FROM Attachment WHERE attachment_name = '" + selectedFile + "'";
+
+            ResultSet rs = st.executeQuery(query);
+            
+            while(rs.next()){
+                
+                //get inputstream from sql database
+                InputStream input = rs.getBinaryStream(3);
+                
+                //if its gif
+                if(selectedFile.contains (".gif")){
+                    
+                    FileOutputStream os =  new FileOutputStream("src/main/resources/memes/" + selectedFile);      
+                    
+                    //download file
+                    int b = 0;
+                   
+                    while ((b = input.read()) != -1)
+                    {
+
+                        os.write(b); 
+                        
+                        
+                    }
+                    
+                    try{
+                        Image imge = new Image(new FileInputStream("src/main/resources/memes/" + selectedFile));
+                        
+        
+                        Meme.setImage(imge);
+                        
+//                        BorderPane borderPane = new BorderPane(Meme);
+                        
+
+                        Meme.setFitHeight(300);
+                        Meme.setFitWidth(300);
+                        Meme.setPreserveRatio(true); 
+                        
+//                        Group root = new Group(Meme);  
+                        
+//                        Scene scene = new Scene(root, 600, 500);  
+//                        
+//                        stage.setTitle("Loading an image"); 
+//                        
+//                        stage.setScene(scene);
+//                        
+//                        stage.show(); 
+                    } catch (NullPointerException e){
+//                     
+//                        
+                    }
+                    
+                    
+                    
+                //if its image
+                }else{
+                    
+                    Image imge = new Image(input);
+                
+                    Meme.setImage(imge);
+
+                    Meme.setFitHeight(300);
+                    Meme.setPreserveRatio(true); 
+                }
+                
+  
+            }
+            
+            
+            st.close();
+            conn.close(); 
+                    
+                    
+        } catch (SQLException e){
+                    System.out.println(e.getErrorCode());
+                    System.out.println(e.getSQLState());
+                    System.out.println(e.getMessage());
+                    System.out.println(e.getCause());
+                    System.out.println(e.getNextException());
+      
+                    
+        } 
+        
+    }
+    
+    @FXML
+    public void GenerateMemes() throws SQLException, FileNotFoundException, IOException{
+        
+    }
+    
+    public void HuiJia(ActionEvent event) throws IOException{
+        App.setRoot("HomePage");
+    }
     
 }
