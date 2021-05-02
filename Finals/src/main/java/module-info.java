@@ -9,6 +9,8 @@ module Finals {
     requires javafx.graphics;
     
     requires java.sql;
+    
+    requires org.apache.pdfbox;
 
     opens Finals to javafx.fxml;
     exports Finals;
