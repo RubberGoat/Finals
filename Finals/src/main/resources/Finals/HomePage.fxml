@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgb(45, 45, 45);" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Finals.HomePageController">
    <children>
-      <Button alignment="CENTER" contentDisplay="TOP" layoutX="222.0" layoutY="260.0" mnemonicParsing="false" prefHeight="113.0" prefWidth="108.0" style="-fx-background-color: rgb(255, 255, 255);" text="Meme Generator">
+      <Button alignment="CENTER" contentDisplay="TOP" layoutX="222.0" layoutY="260.0" mnemonicParsing="false" onAction="#MemeGenerator" prefHeight="113.0" prefWidth="108.0" style="-fx-background-color: rgb(255, 255, 255);" text="Meme Generator">
          <graphic>
             <ImageView fitHeight="85.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
