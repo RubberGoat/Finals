@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import javafx.scene.image.Image;
 
 /**
  * JavaFX App
@@ -24,6 +25,7 @@ public class App extends Application {
         
         scene = new Scene(loadFXML("HomePage"), 640, 480);
         stage.setScene(scene);
+        stage.getIcons().add(new Image("file:src/main/resources/FXML Icon/Suzy.jpg"));
         stage.show();
     }
 
