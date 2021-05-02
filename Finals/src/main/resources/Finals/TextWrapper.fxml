@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.298" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgb(45, 45, 45);" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1">
+<SplitPane dividerPositions="0.298" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgb(45, 45, 45);" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Finals.TextWrapperController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="192.0">
          <children>
@@ -22,11 +22,11 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <ListView prefHeight="341.0" prefWidth="175.0" />
+                  <ListView fx:id="PDFList" prefHeight="341.0" prefWidth="175.0" />
                   <HBox alignment="CENTER" prefHeight="30.0" prefWidth="175.0" spacing="10.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="New PDF" />
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Wrap PDF" />
+                        <Button mnemonicParsing="false" onAction="#NewPdf" prefHeight="26.0" prefWidth="75.0" text="New PDF" />
+                        <Button mnemonicParsing="false" onAction="#WrapPdf" prefHeight="26.0" prefWidth="75.0" text="Wrap PDF" />
                      </children>
                   </HBox>
                </children>
