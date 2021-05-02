@@ -8,8 +8,16 @@ module Finals {
     requires javafx.graphicsEmpty;
     requires javafx.graphics;
     
+    //for bufferedimage
+    requires java.desktop;
+    
+    //for mediaplayer
+    requires javafx.media;
+    
+    //for sql
     requires java.sql;
     
+    //for pdf reader
     requires org.apache.pdfbox;
 
     opens Finals to javafx.fxml;
