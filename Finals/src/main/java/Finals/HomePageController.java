@@ -24,6 +24,11 @@ public class HomePageController {
     }
     
     @FXML
+    private void MemeGenerator() throws IOException{
+                App.setRoot("MemeGenerator");
+    }
+    
+    @FXML
     private void switchToSecondary() throws IOException,InterruptedException {
         
 
