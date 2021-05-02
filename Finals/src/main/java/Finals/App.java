@@ -20,7 +20,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException, ClassNotFoundException, SQLException {
         //setup database
         Database.setupDatabase();
-        Database.printAll();
+//        Database.printAll();
         
         scene = new Scene(loadFXML("HomePage"), 640, 480);
         stage.setScene(scene);
