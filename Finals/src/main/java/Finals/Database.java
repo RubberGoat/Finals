@@ -16,14 +16,14 @@ import java.sql.Statement;
  */
 public class Database {
     
-        final private String database= "jdbc:sqlite:CBDatabase.db";
+        final private String database= "jdbc:sqlite:FinalsDatabase.db";
         
         //setup database
         public static void setupDatabase() throws ClassNotFoundException, SQLException{
             Class.forName("org.sqlite.JDBC");
             
             //create connection
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:CBDatabase.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:FinalsDatabase.db");
 
             //create statement
             Statement st = conn.createStatement();
