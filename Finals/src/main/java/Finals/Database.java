@@ -82,10 +82,11 @@ public class Database {
         Connection conn = DriverManager.getConnection("jdbc:sqlite:FinalsDatabase.db");
         Statement st = conn.createStatement();
         
-        String query = "SELECT attachment_id, attachment_name, attachment_data FROM Attachment";
+        String query = "SELECT attachment_id, attachment_name FROM Attachment";
         ResultSet rs = st.executeQuery(query);
         
         ObservableList<Attachment> AtchList = FXCollections.observableArrayList();
+        
         // Add each row in the ResultSet
         
         while(rs.next()){
