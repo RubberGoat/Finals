@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.298" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="649.0" style="-fx-background-color: rgb(45, 45, 45);" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Finals.MemeGeneratorController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="192.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="48.0" prefWidth="190.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="16.0" prefWidth="49.0" text="Home" />
+                        <Label alignment="CENTER" prefHeight="0.0" prefWidth="127.0" text="Meme List" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <ListView fx:id="MemeList" prefHeight="345.0" prefWidth="190.0" />
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="175.0" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#LocalMeme" prefHeight="26.0" prefWidth="75.0" text="New Local" />
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" text="Generate Meme" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="449.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="463.0" prefWidth="464.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="0.0" prefWidth="175.0" text="Meme Generator" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="Meme" fitHeight="372.0" fitWidth="402.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
