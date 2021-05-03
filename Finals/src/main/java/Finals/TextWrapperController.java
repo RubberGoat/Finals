@@ -20,6 +20,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
@@ -39,6 +40,9 @@ public class TextWrapperController {
     
     @FXML
     private TextArea WrappedText;
+    
+    @FXML
+    private ChoiceBox CB;
 
      
     public void initialize() throws FileNotFoundException, IOException, SQLException{     
@@ -56,9 +60,9 @@ public class TextWrapperController {
         //show pdf into list view
         while(rs.next()){
 
-            PDFList.getItems().add(rs.getString(1)
-
-            );
+            PDFList.getItems().add(rs.getString(1));
+            
+            CB.getItems().add(rs.getString(1));
         }     
   
         st.close();
