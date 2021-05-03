@@ -299,7 +299,12 @@ public class MemeGeneratorController {
         System.out.println("Very Final Outcome:" + PathV2);
         
         
-//        insert path as image
+        if(PathV2.contains(".mp4")){
+            System.out.println("CLICK AGAIN BISHH!");
+            
+        } else {
+            
+//              insert path as image
         Image imge = new Image(PathV2);
                 
 //            add image into database
@@ -356,6 +361,9 @@ public class MemeGeneratorController {
 
         Meme.setFitHeight(300);
         Meme.setPreserveRatio(true); 
+        }
+        
+//      
      
       
     }
