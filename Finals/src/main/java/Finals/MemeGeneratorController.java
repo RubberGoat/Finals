@@ -189,41 +189,32 @@ public class MemeGeneratorController {
                 //if its gif
                 if(selectedFile.contains (".gif")){
                     
-//                    FileOutputStream os =  new FileOutputStream("src/main/resources/memes/" + selectedFile);      
-//                    
-//                    //download file
-//                    int b = 0;
-//                   
-//                    while ((b = input.read()) != -1)
-//                    {
-//
-//                        os.write(b); 
-//                        
-//                        
-//                    }
+                    FileOutputStream os =  new FileOutputStream("src/main/resources/memes/" + selectedFile);      
+                    
+                    //download file
+                    int b = 0;
+                   
+                    while ((b = input.read()) != -1)
+                    {
+
+                        os.write(b); 
+                        
+                        
+                    }
                     
                     try{
-                        Image imge = new Image(input);
+                        Image imge = new Image(new FileInputStream("src/main/resources/memes/" + selectedFile));
                         
         
                         Meme.setImage(imge);
                         
-//                        BorderPane borderPane = new BorderPane(Meme);
-                        
+
 
                         Meme.setFitHeight(300);
                         Meme.setFitWidth(300);
                         Meme.setPreserveRatio(true); 
                         
-//                        Group root = new Group(Meme);  
-                        
-//                        Scene scene = new Scene(root, 600, 500);  
-//                        
-//                        stage.setTitle("Loading an image"); 
-//                        
-//                        stage.setScene(scene);
-//                        
-//                        stage.show(); 
+   
                     } catch (NullPointerException e){
 //                     
 //                        
@@ -298,6 +289,8 @@ public class MemeGeneratorController {
         
         System.out.println("Very Final Outcome:" + PathV2);
         
+        String FileName = "download" + PathV2.substring(PathV2.length() - 8);
+        
         
         if(PathV2.contains(".mp4")){
             System.out.println("CLICK AGAIN BISHH!");
@@ -326,10 +319,9 @@ public class MemeGeneratorController {
                 );
 
          
-                pStF.setString(1, PathV2);
+                pStF.setString(1, FileName);
 
                 URL url = new URL(PathV2);
-                
                 
                 BufferedImage img = ImageIO.read(url);
                                
@@ -337,7 +329,7 @@ public class MemeGeneratorController {
                 
                 try {
                     
-                    ImageIO.write(img,"gif", os); 
+                    ImageIO.write(img,"jpg", os); 
                     
                 } catch (IOException e) {
                         // TODO Auto-generated catch block
@@ -356,7 +348,7 @@ public class MemeGeneratorController {
 
                 pStF.execute();
 
-                MemeList.getItems().add(PathV2);
+                MemeList.getItems().add(FileName);
 
                 conn.close();
 //
