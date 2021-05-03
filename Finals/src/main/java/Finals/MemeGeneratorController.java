@@ -42,6 +42,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -64,6 +65,9 @@ public class MemeGeneratorController {
     
     @FXML
     private ProgressBar pb;
+    
+    private Alert errorMessage = new Alert(Alert.AlertType.ERROR);
+
     
 //    private Stage stage; 
     
@@ -301,12 +305,19 @@ public class MemeGeneratorController {
         
         if(PathV2.contains(".mp4")){
             System.out.println("CLICK AGAIN BISHH!");
+            errorMessage.setTitle("CLICK AGAIN BISHH!");
+            errorMessage.setHeaderText("");
+            errorMessage.setContentText("The Generated meme is sadly in mp4 :( "
+                    + " Please try again.");
+            errorMessage.show();
+            
             
         } else {
             
 //              insert path as image
         Image imge = new Image(PathV2);
                 
+        
 //            add image into database
          try {
 //
@@ -355,16 +366,14 @@ public class MemeGeneratorController {
             }
 
         
-//        
+        
    
         Meme.setImage(imge);
 
         Meme.setFitHeight(300);
         Meme.setPreserveRatio(true); 
         }
-        
-//      
-     
+         
       
     }
     
