@@ -37,6 +37,7 @@ import java.io.ByteArrayOutputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import javafx.scene.Group;
@@ -303,7 +304,7 @@ public class MemeGeneratorController {
                 
 //            add image into database
 //         try {
-
+//
 //                Class.forName("org.sqlite.JDBC");
 //                Connection conn = DriverManager.getConnection("jdbc:sqlite:FinalsDatabase.db"); 
 //
@@ -311,29 +312,34 @@ public class MemeGeneratorController {
 //                PreparedStatement pStF = conn.prepareStatement(
 //                    "INSERT OR IGNORE INTO Attachment (attachment_name, attachment_data) VALUES (?,?)"
 //                );
-
-         
-//                pStF.setString(1, PathV2);
-
-//                  URL url = new URL(PathV2);
-//                  BufferedImage img = ImageIO.read(url);
-//                  File file = new File("downloaded.jpg");
-//                  ImageIO.write(img, "jpg", file);
-                
-//                Path PF = Paths.get(new URL(PathV2).toURI());
+//
+//         
+////                pStF.setString(1, PathV2);
+//
+//                URL url = new URL(PathV2);
+//                BufferedImage img = ImageIO.read(url);
+//                  
 //                
-//                System.out.println(PF);
-
-                    
-
-//                pStF.setBinaryStream(2, mn, (int) PathV2.length());
+//                ByteArrayOutputStream os = new ByteArrayOutputStream();
+//                ImageIO.write(img,"", os); 
+//                
+//                
+//                InputStream fis = new ByteArrayInputStream(os.toByteArray());
+//                
+//                
+//                
+////                String i = (os.toString());
+//                
+//                System.out.println(imge);
 //
-//                pStF.execute();
+////                pStF.setBinaryStream(2, fis, (int) toByteArray().size());
+////
+////                pStF.execute();
+////
+//                MemeList.getItems().add(PathV2);
 //
-//                MemeList.getItems().add(path);
-
 //                conn.close();
-
+//
 //                } catch (SQLException e){
 //                    System.out.println(e.getErrorCode());
 //                    System.out.println(e.getSQLState());
