@@ -189,21 +189,21 @@ public class MemeGeneratorController {
                 //if its gif
                 if(selectedFile.contains (".gif")){
                     
-                    FileOutputStream os =  new FileOutputStream("src/main/resources/memes/" + selectedFile);      
-                    
-                    //download file
-                    int b = 0;
-                   
-                    while ((b = input.read()) != -1)
-                    {
-
-                        os.write(b); 
-                        
-                        
-                    }
+//                    FileOutputStream os =  new FileOutputStream("src/main/resources/memes/" + selectedFile);      
+//                    
+//                    //download file
+//                    int b = 0;
+//                   
+//                    while ((b = input.read()) != -1)
+//                    {
+//
+//                        os.write(b); 
+//                        
+//                        
+//                    }
                     
                     try{
-                        Image imge = new Image(new FileInputStream("src/main/resources/memes/" + selectedFile));
+                        Image imge = new Image(input);
                         
         
                         Meme.setImage(imge);
@@ -271,11 +271,7 @@ public class MemeGeneratorController {
 	.header("x-rapidapi-host", "random-stuff-api.p.rapidapi.com")
 	.asJson();
     
-//    System.out.println(response.getStatus());
-//    System.out.println(response.getHeaders().get("Content-Type"));
-
-        
-              
+           
         //Make Json into readable string
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         JsonParser jp = new JsonParser();
@@ -325,36 +321,44 @@ public class MemeGeneratorController {
                 Connection conn = DriverManager.getConnection("jdbc:sqlite:FinalsDatabase.db"); 
 
 
-//                PreparedStatement pStF = conn.prepareStatement(
-//                    "INSERT OR IGNORE INTO Attachment (attachment_name, attachment_data) VALUES (?,?)"
-//                );
+                PreparedStatement pStF = conn.prepareStatement(
+                    "INSERT OR IGNORE INTO Attachment (attachment_name, attachment_data) VALUES (?,?)"
+                );
 
-//         
-////                pStF.setString(1, PathV2);
-//
-//                URL url = new URL(PathV2);
-//                BufferedImage img = ImageIO.read(url);
-//                  
-//                
-//                ByteArrayOutputStream os = new ByteArrayOutputStream();
-//                ImageIO.write(img,"", os); 
+         
+                pStF.setString(1, PathV2);
+
+                URL url = new URL(PathV2);
                 
                 
-//                InputStream fis = new ByteArrayInputStream(os.toByteArray());
+                BufferedImage img = ImageIO.read(url);
+                               
+                ByteArrayOutputStream os = new ByteArrayOutputStream();
+                
+                try {
+                    
+                    ImageIO.write(img,"gif", os); 
+                    
+                } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                }
                 
                 
+                InputStream fis = new ByteArrayInputStream(os.toByteArray());
                 
-//                String i = (os.toString());
-//                
-//                System.out.println(imge);
-//
-////                pStF.setBinaryStream(2, fis, (int) toByteArray().size());
-////
-////                pStF.execute();
-////
-//                MemeList.getItems().add(PathV2);
-//
-//                conn.close();
+                byte [] data = os.toByteArray();
+                System.out.println(data.length);
+
+                String i = (os.toString());
+             
+                pStF.setBinaryStream(2, fis, (int) data.length);
+
+                pStF.execute();
+
+                MemeList.getItems().add(PathV2);
+
+                conn.close();
 //
                 } catch (SQLException e){
                     System.out.println(e.getErrorCode());
