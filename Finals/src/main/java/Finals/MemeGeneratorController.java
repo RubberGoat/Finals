@@ -5,6 +5,10 @@
  */
 package Finals;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,12 +32,22 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
+import kong.unirest.HttpResponse;
+import kong.unirest.JsonNode;
+import kong.unirest.Unirest;
 
 /**
  *
@@ -244,8 +258,100 @@ public class MemeGeneratorController {
     }
     
     @FXML
-    public void GenerateMemes() throws SQLException, FileNotFoundException, IOException{
+    public void GenerateMemes() throws SQLException, FileNotFoundException, IOException, ClassNotFoundException, URISyntaxException{
+    
+    //host url
+    HttpResponse<JsonNode> response = Unirest.get("https://random-stuff-api.p.rapidapi.com/image/memes?api_key=3J6eh3GMewe8")
+	.header("x-rapidapi-key", "6d0a0b62cfmsh01869e8107362d6p14a574jsn14110bc9063c")
+	.header("x-rapidapi-host", "random-stuff-api.p.rapidapi.com")
+	.asJson();
+    
+//    System.out.println(response.getStatus());
+//    System.out.println(response.getHeaders().get("Content-Type"));
+
         
+              
+        //Make Json into readable string
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        JsonParser jp = new JsonParser();
+        JsonElement je = jp.parse(response.getBody().toString());
+        String prettyJsonString = gson.toJson(je);
+        System.out.println("Outcome: " + prettyJsonString);
+        
+        //edit path file
+        String path = prettyJsonString.substring(prettyJsonString.indexOf("\"")+1, 
+               prettyJsonString.indexOf("\"", prettyJsonString.indexOf("\"")+1));
+        
+        
+        System.out.println("Final Outcome:" + path);
+        
+        
+        String PathV1 = path.substring(0, 3 + 1)
+                           + "s"
+                           + path.substring(3 + 1);
+                           
+                       
+        String PathV2 = PathV1.substring(0, 7 + 1)
+                           + "i."
+                           + PathV1.substring(7 + 1);
+        
+        System.out.println("Very Final Outcome:" + PathV2);
+        
+        
+//        insert path as image
+        Image imge = new Image(PathV2);
+                
+//            add image into database
+//         try {
+
+//                Class.forName("org.sqlite.JDBC");
+//                Connection conn = DriverManager.getConnection("jdbc:sqlite:FinalsDatabase.db"); 
+//
+//
+//                PreparedStatement pStF = conn.prepareStatement(
+//                    "INSERT OR IGNORE INTO Attachment (attachment_name, attachment_data) VALUES (?,?)"
+//                );
+
+         
+//                pStF.setString(1, PathV2);
+
+//                  URL url = new URL(PathV2);
+//                  BufferedImage img = ImageIO.read(url);
+//                  File file = new File("downloaded.jpg");
+//                  ImageIO.write(img, "jpg", file);
+                
+//                Path PF = Paths.get(new URL(PathV2).toURI());
+//                
+//                System.out.println(PF);
+
+                    
+
+//                pStF.setBinaryStream(2, mn, (int) PathV2.length());
+//
+//                pStF.execute();
+//
+//                MemeList.getItems().add(path);
+
+//                conn.close();
+
+//                } catch (SQLException e){
+//                    System.out.println(e.getErrorCode());
+//                    System.out.println(e.getSQLState());
+//                    System.out.println(e.getMessage());
+//                    System.out.println(e.getCause());
+//                    System.out.println(e.getNextException());
+//
+//            }
+
+        
+//        
+   
+        Meme.setImage(imge);
+
+        Meme.setFitHeight(300);
+        Meme.setPreserveRatio(true); 
+     
+      
     }
     
     public void HuiJia(ActionEvent event) throws IOException{
