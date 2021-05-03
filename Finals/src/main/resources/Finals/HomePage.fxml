@@ -27,7 +27,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" layoutY="43.0" prefHeight="59.0" prefWidth="251.0" text="Finals Codes" textFill="WHITE">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="38.0" prefHeight="59.0" prefWidth="552.0" text="AHHHHhhhh Yamateeeeeee" textFill="WHITE">
          <font>
             <Font size="34.0" />
          </font>
