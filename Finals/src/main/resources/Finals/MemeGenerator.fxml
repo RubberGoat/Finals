@@ -31,7 +31,7 @@
                   <HBox alignment="CENTER" prefHeight="30.0" prefWidth="175.0" spacing="10.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#LocalMeme" prefHeight="26.0" prefWidth="75.0" text="New Local" />
-                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" text="Generate Meme" />
+                        <Button mnemonicParsing="false" onAction="#GenerateMemes" prefHeight="26.0" prefWidth="102.0" text="Generate Meme" />
                      </children>
                   </HBox>
                </children>
