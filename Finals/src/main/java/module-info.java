@@ -19,6 +19,12 @@ module Finals {
     
     //for pdf reader
     requires org.apache.pdfbox;
+    
+    //for api connection 
+    requires unirest.java;
+    
+    //for gson
+    requires com.google.gson;
 
     opens Finals to javafx.fxml;
     exports Finals;
