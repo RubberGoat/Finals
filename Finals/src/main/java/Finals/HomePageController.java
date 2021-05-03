@@ -27,37 +27,6 @@ public class HomePageController {
     private void MemeGenerator() throws IOException{
                 App.setRoot("MemeGenerator");
     }
-    
-    @FXML
-    private void switchToSecondary() throws IOException,InterruptedException {
-        
-
-        try{
-            threadOne.start();
-            threadTwo.start();
-            threadThree.start();
-            
-        } catch (Exception e ){
-            System.out.println("Bae Suzy");
-        }
-            
-        threadOne.join();
-        threadTwo.join();
-        threadThree.join();
-        System.out.println("Finished");
-        
-        //Checking the number of lines in each file
-        int result = -1;
-        for (int i = 1; i < 4; i++) {
-            result = ThreadHelper.countLines("class" + i + ".txt");
-            if (result == -1) {
-                System.out.println("class" + i + ".txt does not exist, please double check your file names");
-            } else {
-                System.out.println("class" + i + ".txt has " + result + " lines");
-            }
-        }
-    }
-
-
+   
     
 }
