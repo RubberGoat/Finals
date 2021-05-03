@@ -303,16 +303,16 @@ public class MemeGeneratorController {
         Image imge = new Image(PathV2);
                 
 //            add image into database
-//         try {
+         try {
 //
-//                Class.forName("org.sqlite.JDBC");
-//                Connection conn = DriverManager.getConnection("jdbc:sqlite:FinalsDatabase.db"); 
-//
-//
+                Class.forName("org.sqlite.JDBC");
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:FinalsDatabase.db"); 
+
+
 //                PreparedStatement pStF = conn.prepareStatement(
 //                    "INSERT OR IGNORE INTO Attachment (attachment_name, attachment_data) VALUES (?,?)"
 //                );
-//
+
 //         
 ////                pStF.setString(1, PathV2);
 //
@@ -322,13 +322,13 @@ public class MemeGeneratorController {
 //                
 //                ByteArrayOutputStream os = new ByteArrayOutputStream();
 //                ImageIO.write(img,"", os); 
-//                
-//                
+                
+                
 //                InputStream fis = new ByteArrayInputStream(os.toByteArray());
-//                
-//                
-//                
-////                String i = (os.toString());
+                
+                
+                
+//                String i = (os.toString());
 //                
 //                System.out.println(imge);
 //
@@ -340,14 +340,14 @@ public class MemeGeneratorController {
 //
 //                conn.close();
 //
-//                } catch (SQLException e){
-//                    System.out.println(e.getErrorCode());
-//                    System.out.println(e.getSQLState());
-//                    System.out.println(e.getMessage());
-//                    System.out.println(e.getCause());
-//                    System.out.println(e.getNextException());
-//
-//            }
+                } catch (SQLException e){
+                    System.out.println(e.getErrorCode());
+                    System.out.println(e.getSQLState());
+                    System.out.println(e.getMessage());
+                    System.out.println(e.getCause());
+                    System.out.println(e.getNextException());
+
+            }
 
         
 //        
