@@ -194,78 +194,31 @@ public class TextWrapperController {
      @FXML
     private void extractText() throws IOException,InterruptedException {
         
+       
         
-        //Get name of selected file list
-        String selectedFile = String.valueOf(PDFList.getSelectionModel().getSelectedItem());
-        
-        try {
-            
-                    Connection conn = DriverManager.getConnection("jdbc:sqlite:FinalsDatabase.db");
-                    Statement st = conn.createStatement();
+     
+        //extract text into string
+        Thread threadOne = new MessageLoop("class1.txt",WrappedText.getText(),1);
+        Thread threadTwo = new MessageLoop("class2.txt","I will finish my homework",15);
+        Thread threadThree = new MessageLoop("class3.txt","I will listen to my teacher",20);
 
-//                  show files w the selceted file name from sql
-                    String query = "SELECT * FROM Attachment WHERE attachment_name = '" + selectedFile + "'";
+         try{
+            threadOne.start();
+            threadTwo.start();
+            threadThree.start();
 
-                    ResultSet rs = st.executeQuery(query);
-                    
-                    
-                    while(rs.next()){
-                        
-                        //download file into path
-                        InputStream input = rs.getBinaryStream(3);
+        } catch (Exception e ){
+            System.out.println("Bae Suzy");
+        }
 
-                        FileOutputStream os =  new FileOutputStream("src/main/resources/pdf/" + selectedFile);
-
-                        int b = 0;
-                        while ((b = input.read()) != -1)
-                        {
-                            os.write(b); 
-                        }
-                        //load pdf into PDdoc
-                        PDDocument inputPDF = PDDocument.load(new java.io.File("src/main/resources/pdf/" + selectedFile));
-                        
-                        //get text from pdf
-                        String text = new PDFTextStripper().getText(inputPDF);
-          
-                        //extract text into string
-                        Thread threadOne = new MessageLoop("class1.txt",text,1);
-                        Thread threadTwo = new MessageLoop("class2.txt","I will finish my homework",15);
-                        Thread threadThree = new MessageLoop("class3.txt","I will listen to my teacher",20);
-                        
-                         try{
-                            threadOne.start();
-                            threadTwo.start();
-                            threadThree.start();
-
-                        } catch (Exception e ){
-                            System.out.println("Bae Suzy");
-                        }
-
-                        threadOne.join();
-                        threadTwo.join();
-                        threadThree.join();
-                        System.out.println("Finished");
+        threadOne.join();
+        threadTwo.join();
+        threadThree.join();
+        System.out.println("Finished");
                         
              
-                    }
-                    
-                    
-                    st.close();
-                    conn.close(); 
-                    
-                    } catch (SQLException e){
-                    System.out.println(e.getErrorCode());
-                    System.out.println(e.getSQLState());
-                    System.out.println(e.getMessage());
-                    System.out.println(e.getCause());
-                    System.out.println(e.getNextException());
-                    
-                    } 
-        
-        
-       
-     
-        
+
+
         //Checking the number of lines in each file
         int result = -1;
         for (int i = 1; i < 4; i++) {
