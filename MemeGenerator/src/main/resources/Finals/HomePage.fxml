@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgb(45, 45, 45);" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Finals.HomePageController">
+   <children>
+      <Button alignment="CENTER" contentDisplay="TOP" layoutX="222.0" layoutY="260.0" mnemonicParsing="false" onAction="#MemeGenerator" prefHeight="113.0" prefWidth="108.0" style="-fx-background-color: rgb(255, 255, 255);" text="Meme Generator">
+         <graphic>
+            <ImageView fitHeight="85.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../FXML%20Icon/pngfind.com-pepe-face-png-1971718.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button alignment="CENTER" contentDisplay="TOP" layoutX="56.0" layoutY="260.0" mnemonicParsing="false" onAction="#TextWrapper" prefHeight="113.0" prefWidth="96.0" style="-fx-background-color: rgb(255, 255, 255);" text="Text Wrapper">
+         <graphic>
+            <ImageView fitHeight="84.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../FXML%20Icon/pdf-icon-png-2056.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="24.0" layoutY="38.0" prefHeight="59.0" prefWidth="552.0" text="AHHHHhhhh Yamateeeeeee" textFill="WHITE">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
