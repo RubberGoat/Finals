@@ -57,6 +57,7 @@ public class TextWrapperController {
         String query = "SELECT attachment_name, attachment_data FROM Attachment WHERE attachment_name LIKE '%.pdf' ";
         ResultSet rs = st.executeQuery(query);
         
+        
         //show pdf into list view
         while(rs.next()){
 
