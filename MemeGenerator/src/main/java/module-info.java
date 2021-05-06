@@ -1,4 +1,4 @@
-module Finals {
+module MemeGenerator {
     requires javafx.baseEmpty;
     requires javafx.base;
     requires javafx.fxmlEmpty;
@@ -26,6 +26,6 @@ module Finals {
     //for gson
     requires com.google.gson;
 
-    opens Finals to javafx.fxml;
-    exports Finals;
+    opens MemeGenerator to javafx.fxml;
+    exports MemeGenerator;
 }
