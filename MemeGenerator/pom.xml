@@ -7,8 +7,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <javafx.version>11</javafx.version>
-        <mainClass>Finals.App</mainClass>
-        <moduleName>Finals</moduleName>
+        <mainClass>MemeGenerator.App</mainClass>
+        <moduleName>MemeGenerator</moduleName>
     </properties>
     <dependencies>
         <dependency>
@@ -124,7 +124,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.3</version>
                 <configuration>
-                    <mainClass>Finals.App</mainClass>
+                    <mainClass>MemeGenerator.App</mainClass>
                 </configuration>
             </plugin>
         </plugins>
