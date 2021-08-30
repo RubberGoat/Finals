@@ -257,7 +257,7 @@ public class MemeGeneratorController {
     public void GenerateMemes() throws SQLException, FileNotFoundException, IOException, ClassNotFoundException, URISyntaxException{
     
     //host url
-    HttpResponse<JsonNode> response = Unirest.get("https://random-stuff-api.p.rapidapi.com/image/memes?api_key=3J6eh3GMewe8")
+    HttpResponse<JsonNode> response = Unirest.get("https://random-stuff-api.p.rapidapi.com/image/memes?api_key=gtflwMikMv2l")
 	.header("x-rapidapi-key", "6d0a0b62cfmsh01869e8107362d6p14a574jsn14110bc9063c")
 	.header("x-rapidapi-host", "random-stuff-api.p.rapidapi.com")
 	.asJson();
